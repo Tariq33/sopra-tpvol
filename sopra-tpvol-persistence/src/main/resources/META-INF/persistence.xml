@@ -18,14 +18,12 @@
 		<class>sopra.tpvol.model.Vol</class>
 		<class>sopra.tpvol.model.Reservation</class>
 
-
-		<class>sopra.formation.model.Reservation</class>
-		<class>sopra.formation.model.Paiement</class>
-		<class>sopra.formation.model.Utilisateur</class>
-		<class>sopra.formation.model.Passager</class>
-		<class>sopra.formation.model.Client</class>
-		<class>sopra.formation.model.Societe</class>
-		<class>sopra.formation.model.Particulier</class>
+		<class>sopra.tpvol.model.Paiement</class>
+		<class>sopra.tpvol.model.Utilisateur</class>
+		<class>sopra.tpvol.model.Passager</class>
+		<class>sopra.tpvol.model.Client</class>
+		<class>sopra.tpvol.model.Societe</class>
+		<class>sopra.tpvol.model.Particulier</class>
 
 
 		<properties>

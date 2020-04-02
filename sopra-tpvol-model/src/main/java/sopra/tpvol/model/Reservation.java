@@ -40,7 +40,7 @@ public class Reservation {
 	private Passager passager;
 	
 	@OneToOne
-	@JoinColumn(name = "flight_id")
+	@JoinColumn(name = "path_id")
 	private Trajet trajet;
 
 	public Reservation() {
