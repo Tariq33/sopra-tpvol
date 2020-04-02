@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Salle;
-import sopra.formation.persistence.ISalleDao;
+import sopra.formation.model.Client;
+import sopra.formation.persistence.IClientDao;
 
-public class SalleDaoJpa implements ISalleDao {
+public class ClientDaoJpa implements IClientDao {
+
 
 	@Override
-	public List<Salle> findAll() {
-		List<Salle> salles = null;
+	public List<Client> findAll() {
+		List<Client> clients = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class SalleDaoJpa implements ISalleDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Salle> query = em.createQuery("from Salle", Salle.class);
+			TypedQuery<Client> query = em.createQuery("from Client", Client.class);
 
-			salles = query.getResultList();
+			clients = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class SalleDaoJpa implements ISalleDao {
 			}
 		}
 
-		return salles;
+		return clients;
 	}
 
 	@Override
-	public Salle find(Long id) {
-		Salle salle = null;
+	public Client find(Long id) {
+		Client client = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class SalleDaoJpa implements ISalleDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			salle = em.find(Salle.class, id);
+			client = em.find(Client.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class SalleDaoJpa implements ISalleDao {
 			}
 		}
 
-		return salle;
+		return client;
 	}
 
 	@Override
-	public Salle save(Salle obj) {
-		Salle salle = null;
+	public Client save(Client obj) {
+		Client client = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class SalleDaoJpa implements ISalleDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			salle = em.merge(obj);
+			client = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class SalleDaoJpa implements ISalleDao {
 			}
 		}
 
-		return salle;
+		return client;
 	}
 
 	@Override
-	public void delete(Salle obj) {
+	public void delete(Client obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class SalleDaoJpa implements ISalleDao {
 			}
 		}
 	}
+
+
 }

@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Matiere;
-import sopra.formation.persistence.IMatiereDao;
+import sopra.formation.model.Passager;
+import sopra.formation.persistence.IPassagerDao;
 
-public class MatiereDaoJpa implements IMatiereDao {
+public class PassagerDaoJpa implements IPassagerDao {
+
 
 	@Override
-	public List<Matiere> findAll() {
-		List<Matiere> matieres = null;
+	public List<Passager> findAll() {
+		List<Passager> passagers = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class MatiereDaoJpa implements IMatiereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Matiere> query = em.createQuery("from Matiere", Matiere.class);
+			TypedQuery<Passager> query = em.createQuery("from Passager", Passager.class);
 
-			matieres = query.getResultList();
+			passagers = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class MatiereDaoJpa implements IMatiereDao {
 			}
 		}
 
-		return matieres;
+		return passagers;
 	}
 
 	@Override
-	public Matiere find(Long id) {
-		Matiere matiere = null;
+	public Passager find(Long id) {
+		Passager passager = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class MatiereDaoJpa implements IMatiereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			matiere = em.find(Matiere.class, id);
+			passager = em.find(Passager.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class MatiereDaoJpa implements IMatiereDao {
 			}
 		}
 
-		return matiere;
+		return passager;
 	}
 
 	@Override
-	public Matiere save(Matiere obj) {
-		Matiere matiere = null;
+	public Passager save(Passager obj) {
+		Passager passager = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class MatiereDaoJpa implements IMatiereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			matiere = em.merge(obj);
+			passager = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class MatiereDaoJpa implements IMatiereDao {
 			}
 		}
 
-		return matiere;
+		return passager;
 	}
 
 	@Override
-	public void delete(Matiere obj) {
+	public void delete(Passager obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class MatiereDaoJpa implements IMatiereDao {
 			}
 		}
 	}
+
+
 }

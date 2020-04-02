@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Filiere;
-import sopra.formation.persistence.IFiliereDao;
+import sopra.formation.model.Reservation;
+import sopra.formation.persistence.IReservationDao;
 
-public class FiliereDaoJpa implements IFiliereDao {
+public class ReservationDaoJpa implements IReservationDao {
+
 
 	@Override
-	public List<Filiere> findAll() {
-		List<Filiere> filieres = null;
+	public List<Reservation> findAll() {
+		List<Reservation> reservations = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class FiliereDaoJpa implements IFiliereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Filiere> query = em.createQuery("from Filiere", Filiere.class);
+			TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
 
-			filieres = query.getResultList();
+			reservations = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class FiliereDaoJpa implements IFiliereDao {
 			}
 		}
 
-		return filieres;
+		return reservations;
 	}
 
 	@Override
-	public Filiere find(Long id) {
-		Filiere filiere = null;
+	public Reservation find(Long id) {
+		Reservation reservation = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class FiliereDaoJpa implements IFiliereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			filiere = em.find(Filiere.class, id);
+			reservation = em.find(Reservation.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class FiliereDaoJpa implements IFiliereDao {
 			}
 		}
 
-		return filiere;
+		return reservation;
 	}
 
 	@Override
-	public Filiere save(Filiere obj) {
-		Filiere filiere = null;
+	public Reservation save(Reservation obj) {
+		Reservation reservation = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class FiliereDaoJpa implements IFiliereDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			filiere = em.merge(obj);
+			reservation = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class FiliereDaoJpa implements IFiliereDao {
 			}
 		}
 
-		return filiere;
+		return reservation;
 	}
 
 	@Override
-	public void delete(Filiere obj) {
+	public void delete(Reservation obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class FiliereDaoJpa implements IFiliereDao {
 			}
 		}
 	}
+
+
 }

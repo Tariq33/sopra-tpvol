@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Formateur;
-import sopra.formation.persistence.IFormateurDao;
+import sopra.formation.model.Utilisateur;
+import sopra.formation.persistence.IUtilisateurDao;
 
-public class FormateurDaoJpa implements IFormateurDao {
+public class UtilisateurDaoJpa implements IUtilisateurDao {
+
 
 	@Override
-	public List<Formateur> findAll() {
-		List<Formateur> formateurs = null;
+	public List<Utilisateur> findAll() {
+		List<Utilisateur> utilisateurs = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class FormateurDaoJpa implements IFormateurDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Formateur> query = em.createQuery("from Formateur", Formateur.class);
+			TypedQuery<Utilisateur> query = em.createQuery("from Utilisateur", Utilisateur.class);
 
-			formateurs = query.getResultList();
+			utilisateurs = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class FormateurDaoJpa implements IFormateurDao {
 			}
 		}
 
-		return formateurs;
+		return utilisateurs;
 	}
 
 	@Override
-	public Formateur find(Long id) {
-		Formateur formateur = null;
+	public Utilisateur find(Long id) {
+		Utilisateur utilisateur = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class FormateurDaoJpa implements IFormateurDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			formateur = em.find(Formateur.class, id);
+			utilisateur = em.find(Utilisateur.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class FormateurDaoJpa implements IFormateurDao {
 			}
 		}
 
-		return formateur;
+		return utilisateur;
 	}
 
 	@Override
-	public Formateur save(Formateur obj) {
-		Formateur formateur = null;
+	public Utilisateur save(Utilisateur obj) {
+		Utilisateur utilisateur = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class FormateurDaoJpa implements IFormateurDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			formateur = em.merge(obj);
+			utilisateur = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class FormateurDaoJpa implements IFormateurDao {
 			}
 		}
 
-		return formateur;
+		return utilisateur;
 	}
 
 	@Override
-	public void delete(Formateur obj) {
+	public void delete(Utilisateur obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class FormateurDaoJpa implements IFormateurDao {
 			}
 		}
 	}
+
+
 }

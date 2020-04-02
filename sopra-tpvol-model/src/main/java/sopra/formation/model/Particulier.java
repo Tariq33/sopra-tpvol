@@ -1,6 +1,15 @@
-package tp.model;
+package sopra.formation.model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@DiscriminatorValue("Particulier")
+@Table(name = "private_individual")
 public class Particulier extends Client {
+	@Column(name = "first_name")
 	private String prenom;
 
 	public Particulier() {

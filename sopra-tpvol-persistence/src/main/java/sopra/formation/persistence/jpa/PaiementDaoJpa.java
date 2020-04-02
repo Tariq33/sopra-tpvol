@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Stagiaire;
-import sopra.formation.persistence.IStagiaireDao;
+import sopra.formation.model.Paiement;
+import sopra.formation.persistence.IPaiementDao;
 
-public class StagiaireDaoJpa implements IStagiaireDao {
+public class PaiementDaoJpa implements IPaiementDao {
+
 
 	@Override
-	public List<Stagiaire> findAll() {
-		List<Stagiaire> stagiaires = null;
+	public List<Paiement> findAll() {
+		List<Paiement> paiements = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Stagiaire> query = em.createQuery("from Stagiaire", Stagiaire.class);
+			TypedQuery<Paiement> query = em.createQuery("from Paiement", Paiement.class);
 
-			stagiaires = query.getResultList();
+			paiements = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			}
 		}
 
-		return stagiaires;
+		return paiements;
 	}
 
 	@Override
-	public Stagiaire find(Long id) {
-		Stagiaire stagiaire = null;
+	public Paiement find(Long id) {
+		Paiement paiement = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			stagiaire = em.find(Stagiaire.class, id);
+			paiement = em.find(Paiement.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			}
 		}
 
-		return stagiaire;
+		return paiement;
 	}
 
 	@Override
-	public Stagiaire save(Stagiaire obj) {
-		Stagiaire stagiaire = null;
+	public Paiement save(Paiement obj) {
+		Paiement paiement = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			stagiaire = em.merge(obj);
+			paiement = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			}
 		}
 
-		return stagiaire;
+		return paiement;
 	}
 
 	@Override
-	public void delete(Stagiaire obj) {
+	public void delete(Paiement obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class StagiaireDaoJpa implements IStagiaireDao {
 			}
 		}
 	}
+
+
 }

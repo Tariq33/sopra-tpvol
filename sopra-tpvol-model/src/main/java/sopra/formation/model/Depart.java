@@ -1,4 +1,4 @@
-package tp.model;
+package sopra.formation.model;
 
 import java.util.Date;
 

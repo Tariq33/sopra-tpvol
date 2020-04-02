@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.Evaluation;
-import sopra.formation.persistence.IEvaluationDao;
+import sopra.formation.model.Particulier;
+import sopra.formation.persistence.IParticulierDao;
 
-public class EvaluationDaoJpa implements IEvaluationDao {
+public class ParticulierDaoJpa implements IParticulierDao {
+
 
 	@Override
-	public List<Evaluation> findAll() {
-		List<Evaluation> evaluations = null;
+	public List<Particulier> findAll() {
+		List<Particulier> particuliers = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Evaluation> query = em.createQuery("from Evaluation", Evaluation.class);
+			TypedQuery<Particulier> query = em.createQuery("from Particulier", Particulier.class);
 
-			evaluations = query.getResultList();
+			particuliers = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			}
 		}
 
-		return evaluations;
+		return particuliers;
 	}
 
 	@Override
-	public Evaluation find(Long id) {
-		Evaluation evaluation = null;
+	public Particulier find(Long id) {
+		Particulier particulier = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			evaluation = em.find(Evaluation.class, id);
+			particulier = em.find(Particulier.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			}
 		}
 
-		return evaluation;
+		return particulier;
 	}
 
 	@Override
-	public Evaluation save(Evaluation obj) {
-		Evaluation evaluation = null;
+	public Particulier save(Particulier obj) {
+		Particulier particulier = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			evaluation = em.merge(obj);
+			particulier = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			}
 		}
 
-		return evaluation;
+		return particulier;
 	}
 
 	@Override
-	public void delete(Evaluation obj) {
+	public void delete(Particulier obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class EvaluationDaoJpa implements IEvaluationDao {
 			}
 		}
 	}
+
+
 }

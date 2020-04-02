@@ -7,14 +7,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import sopra.formation.Application;
-import sopra.formation.model.UE;
-import sopra.formation.persistence.IUEDao;
+import sopra.formation.model.Societe;
+import sopra.formation.persistence.ISocieteDao;
 
-public class UEDaoJpa implements IUEDao {
+public class SocieteDaoJpa implements ISocieteDao {
+
 
 	@Override
-	public List<UE> findAll() {
-		List<UE> ues = null;
+	public List<Societe> findAll() {
+		List<Societe> societes = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -24,9 +25,9 @@ public class UEDaoJpa implements IUEDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<UE> query = em.createQuery("from UE", UE.class);
+			TypedQuery<Societe> query = em.createQuery("from Societe", Societe.class);
 
-			ues = query.getResultList();
+			societes = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -40,12 +41,12 @@ public class UEDaoJpa implements IUEDao {
 			}
 		}
 
-		return ues;
+		return societes;
 	}
 
 	@Override
-	public UE find(Long id) {
-		UE ue = null;
+	public Societe find(Long id) {
+		Societe societe = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -55,7 +56,7 @@ public class UEDaoJpa implements IUEDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			ue = em.find(UE.class, id);
+			societe = em.find(Societe.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -69,12 +70,12 @@ public class UEDaoJpa implements IUEDao {
 			}
 		}
 
-		return ue;
+		return societe;
 	}
 
 	@Override
-	public UE save(UE obj) {
-		UE ue = null;
+	public Societe save(Societe obj) {
+		Societe societe = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -84,7 +85,7 @@ public class UEDaoJpa implements IUEDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			ue = em.merge(obj);
+			societe = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -98,11 +99,11 @@ public class UEDaoJpa implements IUEDao {
 			}
 		}
 
-		return ue;
+		return societe;
 	}
 
 	@Override
-	public void delete(UE obj) {
+	public void delete(Societe obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -125,4 +126,6 @@ public class UEDaoJpa implements IUEDao {
 			}
 		}
 	}
+
+
 }

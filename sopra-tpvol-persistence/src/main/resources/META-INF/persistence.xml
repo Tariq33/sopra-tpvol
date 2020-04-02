@@ -7,15 +7,13 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-		<class>sopra.formation.model.Evaluation</class>
-		<class>sopra.formation.model.Filiere</class>
-		<class>sopra.formation.model.Matiere</class>
-		<class>sopra.formation.model.Personne</class>
-		<class>sopra.formation.model.Stagiaire</class>
-		<class>sopra.formation.model.Formateur</class>
-		<class>sopra.formation.model.Salle</class>
-		<class>sopra.formation.model.UE</class>
-
+		<class>sopra.formation.model.Reservation</class>
+		<class>sopra.formation.model.Paiement</class>
+		<class>sopra.formation.model.Utilisateur</class>
+		<class>sopra.formation.model.Passager</class>
+		<class>sopra.formation.model.Client</class>
+		<class>sopra.formation.model.Societe</class>
+		<class>sopra.formation.model.Particulier</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
