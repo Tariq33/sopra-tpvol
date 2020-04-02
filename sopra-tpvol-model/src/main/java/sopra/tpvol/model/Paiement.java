@@ -1,8 +1,5 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Paiement.java
 package sopra.tpvol.model;
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Paiement.java
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

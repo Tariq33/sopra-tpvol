@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Passager;
-import sopra.formation.persistence.IPassagerDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Societe;
+import sopra.tpvol.persistence.ISocieteDao;
 
-public class PassagerDaoJpa implements IPassagerDao {
+public class SocieteDaoJpa implements ISocieteDao {
 
 
 	@Override
-	public List<Passager> findAll() {
-		List<Passager> passagers = null;
+	public List<Societe> findAll() {
+		List<Societe> societes = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class PassagerDaoJpa implements IPassagerDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Passager> query = em.createQuery("from Passager", Passager.class);
+			TypedQuery<Societe> query = em.createQuery("from Societe", Societe.class);
 
-			passagers = query.getResultList();
+			societes = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class PassagerDaoJpa implements IPassagerDao {
 			}
 		}
 
-		return passagers;
+		return societes;
 	}
 
 	@Override
-	public Passager find(Long id) {
-		Passager passager = null;
+	public Societe find(Long id) {
+		Societe societe = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class PassagerDaoJpa implements IPassagerDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			passager = em.find(Passager.class, id);
+			societe = em.find(Societe.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class PassagerDaoJpa implements IPassagerDao {
 			}
 		}
 
-		return passager;
+		return societe;
 	}
 
 	@Override
-	public Passager save(Passager obj) {
-		Passager passager = null;
+	public Societe save(Societe obj) {
+		Societe societe = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class PassagerDaoJpa implements IPassagerDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			passager = em.merge(obj);
+			societe = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class PassagerDaoJpa implements IPassagerDao {
 			}
 		}
 
-		return passager;
+		return societe;
 	}
 
 	@Override
-	public void delete(Passager obj) {
+	public void delete(Societe obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

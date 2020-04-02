@@ -1,8 +1,4 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Depart.java
 package sopra.tpvol.model;
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Depart.java
 
 import java.util.Date;
 

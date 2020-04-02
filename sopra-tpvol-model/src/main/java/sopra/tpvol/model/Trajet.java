@@ -1,9 +1,5 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Trajet.java
 package sopra.tpvol.model;
 
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Trajet.java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-//import javax.persistence.OneToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
@@ -25,8 +20,7 @@ public class Trajet {
 	private Long id;
 	@Version
 	private int version;
-	@Transient
-//	@OneToOne(mappedBy = trajet);
+	@OneToOne(mappedBy = "trajet")
 	private Reservation reservation;
 	@ManyToMany(mappedBy="trajets")
 	private List<Vol> vols = new ArrayList<Vol>();

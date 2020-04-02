@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Client;
-import sopra.formation.persistence.IClientDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Passager;
+import sopra.tpvol.persistence.IPassagerDao;
 
-public class ClientDaoJpa implements IClientDao {
+public class PassagerDaoJpa implements IPassagerDao {
 
 
 	@Override
-	public List<Client> findAll() {
-		List<Client> clients = null;
+	public List<Passager> findAll() {
+		List<Passager> passagers = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class ClientDaoJpa implements IClientDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Client> query = em.createQuery("from Client", Client.class);
+			TypedQuery<Passager> query = em.createQuery("from Passager", Passager.class);
 
-			clients = query.getResultList();
+			passagers = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class ClientDaoJpa implements IClientDao {
 			}
 		}
 
-		return clients;
+		return passagers;
 	}
 
 	@Override
-	public Client find(Long id) {
-		Client client = null;
+	public Passager find(Long id) {
+		Passager passager = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class ClientDaoJpa implements IClientDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			client = em.find(Client.class, id);
+			passager = em.find(Passager.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class ClientDaoJpa implements IClientDao {
 			}
 		}
 
-		return client;
+		return passager;
 	}
 
 	@Override
-	public Client save(Client obj) {
-		Client client = null;
+	public Passager save(Passager obj) {
+		Passager passager = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class ClientDaoJpa implements IClientDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			client = em.merge(obj);
+			passager = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class ClientDaoJpa implements IClientDao {
 			}
 		}
 
-		return client;
+		return passager;
 	}
 
 	@Override
-	public void delete(Client obj) {
+	public void delete(Passager obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

@@ -1,8 +1,4 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Client.java
 package sopra.tpvol.model;
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Client.java
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +21,7 @@ import javax.persistence.Version;
 @Table(name = "client")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "disc", discriminatorType = DiscriminatorType.STRING, length = 15)
-public class Client {
+public abstract class Client {
 	@Id
 	@GeneratedValue
 	private Long id;

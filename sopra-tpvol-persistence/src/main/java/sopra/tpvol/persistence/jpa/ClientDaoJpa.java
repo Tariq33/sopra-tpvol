@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Reservation;
-import sopra.formation.persistence.IReservationDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Client;
+import sopra.tpvol.persistence.IClientDao;
 
-public class ReservationDaoJpa implements IReservationDao {
+public class ClientDaoJpa implements IClientDao {
 
 
 	@Override
-	public List<Reservation> findAll() {
-		List<Reservation> reservations = null;
+	public List<Client> findAll() {
+		List<Client> clients = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class ReservationDaoJpa implements IReservationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
+			TypedQuery<Client> query = em.createQuery("from Client", Client.class);
 
-			reservations = query.getResultList();
+			clients = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class ReservationDaoJpa implements IReservationDao {
 			}
 		}
 
-		return reservations;
+		return clients;
 	}
 
 	@Override
-	public Reservation find(Long id) {
-		Reservation reservation = null;
+	public Client find(Long id) {
+		Client client = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class ReservationDaoJpa implements IReservationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			reservation = em.find(Reservation.class, id);
+			client = em.find(Client.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class ReservationDaoJpa implements IReservationDao {
 			}
 		}
 
-		return reservation;
+		return client;
 	}
 
 	@Override
-	public Reservation save(Reservation obj) {
-		Reservation reservation = null;
+	public Client save(Client obj) {
+		Client client = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class ReservationDaoJpa implements IReservationDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			reservation = em.merge(obj);
+			client = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class ReservationDaoJpa implements IReservationDao {
 			}
 		}
 
-		return reservation;
+		return client;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Client obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

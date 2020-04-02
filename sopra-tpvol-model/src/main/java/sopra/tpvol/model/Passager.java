@@ -1,8 +1,5 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Passager.java
 package sopra.tpvol.model;
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Passager.java
+
 
 import java.util.ArrayList;
 import java.util.Date;

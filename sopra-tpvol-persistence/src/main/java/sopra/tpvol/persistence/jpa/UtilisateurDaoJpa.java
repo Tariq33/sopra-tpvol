@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Paiement;
-import sopra.formation.persistence.IPaiementDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Utilisateur;
+import sopra.tpvol.persistence.IUtilisateurDao;
 
-public class PaiementDaoJpa implements IPaiementDao {
+public class UtilisateurDaoJpa implements IUtilisateurDao {
 
 
 	@Override
-	public List<Paiement> findAll() {
-		List<Paiement> paiements = null;
+	public List<Utilisateur> findAll() {
+		List<Utilisateur> utilisateurs = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class PaiementDaoJpa implements IPaiementDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Paiement> query = em.createQuery("from Paiement", Paiement.class);
+			TypedQuery<Utilisateur> query = em.createQuery("from Utilisateur", Utilisateur.class);
 
-			paiements = query.getResultList();
+			utilisateurs = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class PaiementDaoJpa implements IPaiementDao {
 			}
 		}
 
-		return paiements;
+		return utilisateurs;
 	}
 
 	@Override
-	public Paiement find(Long id) {
-		Paiement paiement = null;
+	public Utilisateur find(Long id) {
+		Utilisateur utilisateur = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class PaiementDaoJpa implements IPaiementDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			paiement = em.find(Paiement.class, id);
+			utilisateur = em.find(Utilisateur.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class PaiementDaoJpa implements IPaiementDao {
 			}
 		}
 
-		return paiement;
+		return utilisateur;
 	}
 
 	@Override
-	public Paiement save(Paiement obj) {
-		Paiement paiement = null;
+	public Utilisateur save(Utilisateur obj) {
+		Utilisateur utilisateur = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class PaiementDaoJpa implements IPaiementDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			paiement = em.merge(obj);
+			utilisateur = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class PaiementDaoJpa implements IPaiementDao {
 			}
 		}
 
-		return paiement;
+		return utilisateur;
 	}
 
 	@Override
-	public void delete(Paiement obj) {
+	public void delete(Utilisateur obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

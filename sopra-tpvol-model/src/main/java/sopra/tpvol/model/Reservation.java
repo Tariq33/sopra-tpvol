@@ -1,10 +1,4 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Reservation.java
 package sopra.tpvol.model;
-
-public class Reservation {
-
-=======
-package sopra.formation.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 @Entity
@@ -26,7 +19,6 @@ public class Reservation {
 	@Version
 	private int version;
 	@Column(name = "cancelled", nullable = false)
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Reservation.java
 	private Boolean annulee;
 	@Column(name = "confirmed")
 	private Boolean confirmee;
@@ -47,9 +39,8 @@ public class Reservation {
 	@JoinColumn(name = "passenger_id")
 	private Passager passager;
 	
-//	@OneToOne
-//	@JoinColumn(name = "flight_id")
-	@Transient
+	@OneToOne
+	@JoinColumn(name = "flight_id")
 	private Trajet trajet;
 
 	public Reservation() {

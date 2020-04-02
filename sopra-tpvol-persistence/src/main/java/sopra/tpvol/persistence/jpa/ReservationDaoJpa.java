@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Particulier;
-import sopra.formation.persistence.IParticulierDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Reservation;
+import sopra.tpvol.persistence.IReservationDao;
 
-public class ParticulierDaoJpa implements IParticulierDao {
+public class ReservationDaoJpa implements IReservationDao {
 
 
 	@Override
-	public List<Particulier> findAll() {
-		List<Particulier> particuliers = null;
+	public List<Reservation> findAll() {
+		List<Reservation> reservations = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Particulier> query = em.createQuery("from Particulier", Particulier.class);
+			TypedQuery<Reservation> query = em.createQuery("from Reservation", Reservation.class);
 
-			particuliers = query.getResultList();
+			reservations = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			}
 		}
 
-		return particuliers;
+		return reservations;
 	}
 
 	@Override
-	public Particulier find(Long id) {
-		Particulier particulier = null;
+	public Reservation find(Long id) {
+		Reservation reservation = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			particulier = em.find(Particulier.class, id);
+			reservation = em.find(Reservation.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			}
 		}
 
-		return particulier;
+		return reservation;
 	}
 
 	@Override
-	public Particulier save(Particulier obj) {
-		Particulier particulier = null;
+	public Reservation save(Reservation obj) {
+		Reservation reservation = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			particulier = em.merge(obj);
+			reservation = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class ParticulierDaoJpa implements IParticulierDao {
 			}
 		}
 
-		return particulier;
+		return reservation;
 	}
 
 	@Override
-	public void delete(Particulier obj) {
+	public void delete(Reservation obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

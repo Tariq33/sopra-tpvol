@@ -1,8 +1,5 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Societe.java
 package sopra.tpvol.model;
-=======
-package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Societe.java
+
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;

@@ -1,4 +1,4 @@
-package sopra.formation.persistence.jpa;
+package sopra.tpvol.persistence.jpa;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import sopra.formation.Application;
-import sopra.formation.model.Societe;
-import sopra.formation.persistence.ISocieteDao;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Particulier;
+import sopra.tpvol.persistence.IParticulierDao;
 
-public class SocieteDaoJpa implements ISocieteDao {
+public class ParticulierDaoJpa implements IParticulierDao {
 
 
 	@Override
-	public List<Societe> findAll() {
-		List<Societe> societes = null;
+	public List<Particulier> findAll() {
+		List<Particulier> particuliers = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -25,9 +25,9 @@ public class SocieteDaoJpa implements ISocieteDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Societe> query = em.createQuery("from Societe", Societe.class);
+			TypedQuery<Particulier> query = em.createQuery("from Particulier", Particulier.class);
 
-			societes = query.getResultList();
+			particuliers = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class SocieteDaoJpa implements ISocieteDao {
 			}
 		}
 
-		return societes;
+		return particuliers;
 	}
 
 	@Override
-	public Societe find(Long id) {
-		Societe societe = null;
+	public Particulier find(Long id) {
+		Particulier particulier = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -56,7 +56,7 @@ public class SocieteDaoJpa implements ISocieteDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			societe = em.find(Societe.class, id);
+			particulier = em.find(Particulier.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -70,12 +70,12 @@ public class SocieteDaoJpa implements ISocieteDao {
 			}
 		}
 
-		return societe;
+		return particulier;
 	}
 
 	@Override
-	public Societe save(Societe obj) {
-		Societe societe = null;
+	public Particulier save(Particulier obj) {
+		Particulier particulier = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -85,7 +85,7 @@ public class SocieteDaoJpa implements ISocieteDao {
 			tx = em.getTransaction();
 			tx.begin();
 
-			societe = em.merge(obj);
+			particulier = em.merge(obj);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,11 +99,11 @@ public class SocieteDaoJpa implements ISocieteDao {
 			}
 		}
 
-		return societe;
+		return particulier;
 	}
 
 	@Override
-	public void delete(Societe obj) {
+	public void delete(Particulier obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 

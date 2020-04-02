@@ -1,26 +1,19 @@
 package sopra.formation.test;
 
-import sopra.formation.Application;
-import sopra.formation.model.Paiement;
-import sopra.formation.model.Particulier;
-import sopra.formation.model.Passager;
-import sopra.formation.model.Reservation;
-import sopra.formation.model.Societe;
-import sopra.formation.model.Utilisateur;
-import sopra.formation.persistence.IClientDao;
-import sopra.formation.persistence.IPaiementDao;
-import sopra.formation.persistence.IParticulierDao;
-import sopra.formation.persistence.IPassagerDao;
-import sopra.formation.persistence.IReservationDao;
-import sopra.formation.persistence.ISocieteDao;
-import sopra.formation.persistence.IUtilisateurDao;
-import sopra.formation.persistence.jpa.ClientDaoJpa;
-import sopra.formation.persistence.jpa.PaiementDaoJpa;
-import sopra.formation.persistence.jpa.ParticulierDaoJpa;
-import sopra.formation.persistence.jpa.PassagerDaoJpa;
-import sopra.formation.persistence.jpa.ReservationDaoJpa;
-import sopra.formation.persistence.jpa.SocieteDaoJpa;
-import sopra.formation.persistence.jpa.UtilisateurDaoJpa;
+import sopra.tpvol.Application;
+import sopra.tpvol.model.Paiement;
+import sopra.tpvol.model.Particulier;
+import sopra.tpvol.model.Passager;
+import sopra.tpvol.model.Reservation;
+import sopra.tpvol.model.Societe;
+import sopra.tpvol.model.Utilisateur;
+import sopra.tpvol.persistence.IClientDao;
+import sopra.tpvol.persistence.IPaiementDao;
+import sopra.tpvol.persistence.IParticulierDao;
+import sopra.tpvol.persistence.IPassagerDao;
+import sopra.tpvol.persistence.IReservationDao;
+import sopra.tpvol.persistence.ISocieteDao;
+import sopra.tpvol.persistence.IUtilisateurDao;
 
 public class TestTpVol {
 	public static void main(String[] args) {
