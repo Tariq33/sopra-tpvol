@@ -1,20 +1,60 @@
+<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Passager.java
 package sopra.tpvol.model;
+=======
+package sopra.formation.model;
+>>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Passager.java
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "passenger")
 public class Passager {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Version
+	private int version;
+	@Column(name = "last_name")
 	private String nom;
+	@Column(name = "first_name")
 	private String prenom;
+	@Column(name = "birth_date")
 	private Date dateDeNaissance;
+	@Column(name = "nationality")
 	private String nationalite;
+	@Column(name = "gender")
 	private String sexe;
+	@Column(name = "passport_number")
 	private String numeroPasseport;
+	@Column(name = "passport_validity_date")
 	private Date dateValiditePasseport;
+	@Column(name = "id_type")
 	private String typePieceIdentite;
+	@Column(name = "handicap")
 	private Boolean handicap;
-	private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+
+	@OneToMany(mappedBy = "passager")
+	private List<Reservation> reservations = new ArrayList<Reservation>();
+	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
+
+	public Passager() {
+		super();
+	}
 
 	public Passager(String nom, String prenom) {
 		super();
@@ -102,7 +142,7 @@ public class Passager {
 		this.handicap = handicap;
 	}
 
-	public ArrayList<Reservation> getReservations() {
+	public List<Reservation> getReservations() {
 		return reservations;
 	}
 
@@ -112,6 +152,22 @@ public class Passager {
 
 	public void addReservation(Reservation reservation) {
 		this.reservations.add(reservation);
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

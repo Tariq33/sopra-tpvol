@@ -7,6 +7,7 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+<<<<<<< HEAD
 		<class>sopra.tpvol.model.Aeroport</class>
 		<class>sopra.tpvol.model.Arrivee</class>
 		<class>sopra.tpvol.model.Avion</class>
@@ -17,6 +18,15 @@
 		<class>sopra.tpvol.model.Vol</class>
 		<class>sopra.tpvol.model.Reservation</class>
 
+=======
+		<class>sopra.formation.model.Reservation</class>
+		<class>sopra.formation.model.Paiement</class>
+		<class>sopra.formation.model.Utilisateur</class>
+		<class>sopra.formation.model.Passager</class>
+		<class>sopra.formation.model.Client</class>
+		<class>sopra.formation.model.Societe</class>
+		<class>sopra.formation.model.Particulier</class>
+>>>>>>> master
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver"

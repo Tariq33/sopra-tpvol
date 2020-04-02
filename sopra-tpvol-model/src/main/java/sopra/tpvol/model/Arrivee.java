@@ -1,4 +1,8 @@
+<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Arrivee.java
 package sopra.tpvol.model;
+=======
+package sopra.formation.model;
+>>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Arrivee.java
 
 import java.util.Date;
 

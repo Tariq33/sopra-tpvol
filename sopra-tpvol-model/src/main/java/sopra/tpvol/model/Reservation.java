@@ -1,14 +1,55 @@
+<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Reservation.java
 package sopra.tpvol.model;
 
 public class Reservation {
 
+=======
+package sopra.formation.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "booking")
+public class Reservation {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@Version
+	private int version;
+	@Column(name = "cancelled", nullable = false)
+>>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Reservation.java
 	private Boolean annulee;
+	@Column(name = "confirmed")
 	private Boolean confirmee;
+	@Column(name = "open")
 	private Boolean ouverte;
+	@Column(name = "booking_number")
 	private String numeroDeReservation;
+
+	@OneToOne
+	@JoinColumn(name = "payment_id")
 	private Paiement paiement;
+	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
 	private Client client;
+	
+	@ManyToOne
+	@JoinColumn(name = "passenger_id")
 	private Passager passager;
+	
+//	@OneToOne
+//	@JoinColumn(name = "flight_id")
+	@Transient
 	private Trajet trajet;
 
 	public Reservation() {
@@ -77,6 +118,22 @@ public class Reservation {
 
 	public void setTrajet(Trajet trajet) {
 		this.trajet = trajet;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

@@ -1,4 +1,8 @@
+<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Ville.java
 package sopra.tpvol.model;
+=======
+package sopra.formation.model;
+>>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Ville.java
 
 import java.util.ArrayList;
 import java.util.List;

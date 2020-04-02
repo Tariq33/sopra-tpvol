@@ -1,8 +1,4 @@
-<<<<<<< HEAD:sopra-tpvol-model/src/main/java/sopra/tpvol/model/Client.java
-package sopra.tpvol.model;
-=======
 package sopra.formation.model;
->>>>>>> master:sopra-tpvol-model/src/main/java/sopra/formation/model/Client.java
 
 import java.util.ArrayList;
 import java.util.List;
