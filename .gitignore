@@ -1,16 +1,8 @@
 
-sopra-tpvol-model/.project
+sopra-tpvol-spring/.project
 
-sopra-tpvol-model/.classpath
+sopra-tpvol-spring/.classpath
 
-sopra-tpvol-model/.settings/
+sopra-tpvol-spring/.settings/
 
-sopra-tpvol-model/target/
-
-sopra-tpvol-persistence/.project
-
-sopra-tpvol-persistence/.classpath
-
-sopra-tpvol-persistence/.settings/
-
-sopra-tpvol-persistence/target/
+sopra-tpvol-spring/target/
