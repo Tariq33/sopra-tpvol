@@ -15,7 +15,7 @@
 	<context:annotation-config/>
 	
 	<!-- Indiquer dans quel(s) paquetage(s) scanner pour trouver des annotations -->
-	<context:component-scan base-package="sopra.tpvol-spring.jpa"/>
+	<context:component-scan base-package="sopra.tpvol.persistence.jpa"/>
 	
 	<!-- On crée la dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
