@@ -3,127 +3,49 @@ package sopra.tpvol.persistence.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import sopra.tpvol.Application;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import sopra.tpvol.model.Ville;
 import sopra.tpvol.persistence.IVilleDao;
 
+@Repository
+@Transactional
 public class VilleDaoJpa implements IVilleDao {
 
+	@PersistenceContext
+	private EntityManager em; // entityManagerFactory.createEntityManager()
+
 	@Override
+	@Transactional(readOnly = true)
 	public List<Ville> findAll() {
-		List<Ville> villes = null;
+		
+		TypedQuery<Ville> query = em.createQuery("from Ville", Ville.class);
 
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			TypedQuery<Ville> query = em.createQuery("from Ville", Ville.class);
-
-			villes = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
-		return villes;
+		return query.getResultList();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Ville find(Long id) {
-		Ville ville = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			ville = em.find(Ville.class, id);
-
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
-		return ville;
+	
+		return em.find(Ville.class, id);
 	}
 
 	@Override
 	public Ville save(Ville obj) {
-		Ville ville = null;
-
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			ville = em.merge(obj);
-
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
-		return ville;
+	
+		return em.merge(obj);
 	}
 
 	@Override
 	public void delete(Ville obj) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
+		
 			em.remove(em.merge(obj));
 
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			e.printStackTrace();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
 	}
 
 }
