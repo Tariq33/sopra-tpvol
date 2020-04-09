@@ -1,14 +1,12 @@
 package sopra.tpvol.test;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import sopra.tpvol.Application;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import sopra.tpvol.model.Aeroport;
 import sopra.tpvol.model.Arrivee;
 import sopra.tpvol.model.Avion;
-import sopra.tpvol.model.Client;
 import sopra.tpvol.model.Compagnie;
 import sopra.tpvol.model.Depart;
 import sopra.tpvol.model.Paiement;
@@ -20,26 +18,27 @@ import sopra.tpvol.model.Trajet;
 import sopra.tpvol.model.Utilisateur;
 import sopra.tpvol.model.Ville;
 import sopra.tpvol.model.Vol;
-import sopra.tpvol.persistence.IClientDao;
-import sopra.tpvol.persistence.IPaiementDao;
-import sopra.tpvol.persistence.IParticulierDao;
 import sopra.tpvol.persistence.IPassagerDao;
 import sopra.tpvol.persistence.IReservationDao;
 import sopra.tpvol.persistence.ISocieteDao;
+import sopra.tpvol.persistence.ITrajetDao;
 import sopra.tpvol.persistence.IUtilisateurDao;
+import sopra.tpvol.persistence.IVilleDao;
+import sopra.tpvol.persistence.IVolDao;
 
 public class TestDao {
 
 	public static void main(String[] args) {
 		
-
-		IClientDao clientDao = Application.getInstance().getClientDao();
-		IPaiementDao paiementDao = Application.getInstance().getPaiementDao();
-		IParticulierDao particulierDao = Application.getInstance().getParticulierDao();
-		IPassagerDao passagerDao = Application.getInstance().getPassagerDao();
-		IReservationDao reservationDao = Application.getInstance().getReservationDao();
-		ISocieteDao societeDao = Application.getInstance().getSocieteDao();
-		IUtilisateurDao utilisateurDao = Application.getInstance().getUtilisateurDao();
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+		
+		IPassagerDao passagerDao = context.getBean(IPassagerDao.class);
+		IReservationDao reservationDao = context.getBean(IReservationDao.class);
+		ISocieteDao societeDao = context.getBean(ISocieteDao.class);
+		ITrajetDao trajetDao = context.getBean(ITrajetDao.class);
+		IUtilisateurDao utilisateurDao = context.getBean(IUtilisateurDao.class);
+		IVilleDao villeDao = context.getBean(IVilleDao.class);
+		IVolDao volDao = context.getBean(IVolDao.class);
 
 		Utilisateur userKevin = new Utilisateur("userKevin", "mdpKevin");
 		Utilisateur userSopra = new Utilisateur("userSopra", "mdpSopra");
@@ -149,6 +148,10 @@ public class TestDao {
 		
 		kevinResa.setTrajet(trajet);
 		kevinResa = reservationDao.save(kevinResa);
+		
+		
+		
+		context.close();
 		
 	}
 }
